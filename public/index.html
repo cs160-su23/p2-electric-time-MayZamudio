@@ -1,0 +1,138 @@
+<!-- Referenced: https://www.w3schools.com/html/html_responsive.asp-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--link rel="stylesheet" type="text/css" href="/css/styles.css"-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div style="background-color:#add9a9;padding:15px;text-align:center;">
+  <h1>shm's excellent fibonacci rabbits app</h1>
+</div>
+
+<!--div style="overflow:auto"-->
+<br>
+<div class="container">
+  <div class="row">
+    <!-- first row is just the description. -->
+    <p>
+      Did you know? The Fibonacci sequence first appeared in Fibonacci's book Liber Abaci <em>(The Book of Calculation, 1202)</em> where it was used to calculate the growth of rabbit populations!
+      <br><br>
+      Let's say that you start with 1 pair of baby rabbits. They take 1 month to mature, before producing another pair of rabbits. Every month thereafter, all adult pairs of rabbits produce another pair of rabbits. Also, rabbits never die and never stop being able to produce further rabbits! 
+      
+      <a href="https://proofwiki.org/wiki/Rabbit_Problem/Solution">Click this link to view my source (Proof Wiki!)</a>
+
+    </p> 
+    <br>
+  </div> <!-- end of row-->
+
+  <br>
+  <div class="row">
+    <div class="col-2">
+      <!--empty spacer col that takes up 2/12 of the space in this row. for ref: https://getbootstrap.com/docs/4.0/layout/grid/-->
+    </div>
+    
+    <div class="col">
+      <!-- calculator is gonna go here --> 
+      <h3>Fibonnaci Rabbit Calculator Below</h3>
+
+      Input # of months:
+      
+      <div class="d-flex justify-content-center">
+        <!-- reference: https://getbootstrap.com/docs/4.0/utilities/flex/-->
+        <!-- ref: https://getbootstrap.com/docs/4.0/components/forms/-->
+      <input class="form-control" type="text" id="months" placeholder="How many months of breeding?">
+      <input type="button" id="mycoolbutton" value="Calculate Rabbits!">
+
+
+      </div>
+    </div>
+    <div class="col-2">
+      <!--empty spacer col-->
+    </div>
+  </div> <!-- end of row-->
+
+  <br>
+
+  <div class="d-flex justify-content-center">
+      <h1 id="result-text" class="text-center">result will appear here</h1>
+  </div>
+
+
+</div> <!-- end of container-->
+
+
+</body>
+
+<script>
+  //JavaScript for adding functionality to this webpage.... 
+
+  //first, let's find the text where we'll put the result.
+    var result = document.getElementById("result-text");
+
+
+
+  /* now, let's find the submit button, then add this function to the HTML DOM 'onclick' event. in other words, make it so that when the button is clicked, it will run this code... */
+
+  document.getElementById("mycoolbutton").onclick = function optional_name() {
+          /*lets get our variable (months) from the input field: */
+
+          var months = document.getElementById("months").value
+
+          if (months == ""){ //handle a blank input
+            months = 0; //
+            result.innerText = "After 0 months, you will have 1 pair, for a total of 2 rabbits!";
+          }
+          else{
+            //console.log("entered number of months: " + months)
+            pairs = compute_rabbits(months); 
+            //get the answer using our helper function...
+
+            result.innerText = "After " + months + " months, you will have " + pairs + " pair(s), for a total of " + pairs*2 + " rabbits!";
+            //now change the text on the page to display the answer properly.
+
+          }
+
+      }
+
+
+  /* Helper Functions! */
+      
+  function compute_rabbits(x){ 
+      
+      return fib(parseInt(x)+2); 
+
+      //the formula for this particular problem is the n+2th Fibonacci number.
+      //source: https://proofwiki.org/wiki/Rabbit_Problem/Solution
+  }
+
+
+  // you can ignore the code below, it's just a helper function for the fibonacci series. Ref: https://www.geeksforgeeks.org/different-ways-to-print-fibonacci-series-in-java/ (but converted to JavaScript by shm.)
+  // It's a Dynamic Programming approach that could be improved but that's not the point of this lol. 
+
+  function fib(x)
+  {
+    //console.log("lets make some rabbits...")
+    //if you're curious, I'm using BigInts because the numbers can get very big. Rabbits multiply fast!! don't think about it too hard though (unless you need to use very big numbers in the future one day)
+      const f = new BigInt64Array(x+1); 
+
+      f[0] =  0n;
+      f[1] =  1n;
+
+      for (i = 2; i <= parseInt(x); i++) {
+        //console.log("i: " + i + " previous: " + f[i-1] + " ,  " + f[i-2] + 'together: ' + (f[i-1] + f[i-2]));
+          f[i] = (f[i - 1] + (f[i - 2]));
+          //console.log(" current f[i]:" + f[i]);
+      }
+      return parseInt(f[x]);
+  }
+  /*-- end of helper functions--*/
+
+
+
+//end of my javascript for this page!
+</script>
+</html>
+
