@@ -1,0 +1,49 @@
+body,
+html {
+  font-family: Arial;
+  color: white;
+  background-color: #000520;
+}
+
+.nav-spacer {
+  background-color: #003262;
+  padding: 40px;
+}
+
+.berkeley-gold {
+  background-color: #c4820e;
+  padding: 5px;
+}
+
+/* Icon bar for footer */
+.icon-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #2e2e2e;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.icon-bar a {
+  float: left;
+  width: 33%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #c4820e;
+}
+
+.main-content {
+  margin-bottom: 60px;
+}
