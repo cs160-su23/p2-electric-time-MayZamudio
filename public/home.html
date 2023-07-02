@@ -1,0 +1,320 @@
+<!-- Referenced: https://www.w3schools.com/html/html_responsive.asp-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BK Go!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/bk-GO.png" />
+
+    <!--link rel="stylesheet" type="text/css" href="/css/styles.css"-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.2/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Sources: 
+  Navbar:
+      Navbar: https://getbootstrap.com/docs/5.2/components/navbar/
+
+Used for making images radio button 
+https://stackoverflow.com/questions/17541614/use-images-instead-of-radio-buttons
+ -->
+
+    <style>
+      body,
+      html {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+      .h-100 {
+        height: 100%;
+      }
+      .h-15 {
+        height: 15%;
+      }
+
+      .h-70 {
+        height: 70%;
+      }
+      .main-content {
+        padding: 6em 1em 0em 3em;
+      }
+
+      .small-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .card-img-top:hover {
+        opacity: 0.8;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .card-img-top.selected {
+        border: 4px solid rgb(0, 179, 255);
+      }
+
+      .card input[type="radio"] {
+        display: none;
+      }
+      .card input[type="radio"] + img {
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .card input[type="radio"]:checked + img {
+        /* Berkeley Blue */
+        box-shadow: 0 8px 20px rgba(0, 50, 98, 0.5);
+        border-radius: 10%;
+        /* box-shadow: 0 8px 15px rgba(196, 130, 14, 0.3); */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="h-100">
+      <nav class="navbar navbar-dark bg-dark fixed-top shadow p-3 mb-5">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <!-- <img src="images/bk-GO.png" alt="BK Logo" class="image-logo"
+          /> -->
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end text-bg-dark"
+            tabindex="-1"
+            id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <div style="text-align: center">
+                <img src="images/bk-GO.png" alt="BK Logo" width="50%" />
+              </div>
+
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- nav bar -->
+
+      <!-- main content -->
+      <div class="row h-70 main-content">
+        <div class="row d-flex justify-content-center">
+          <form>
+            <div class="row">
+              <!-- first row is just the description. -->
+              <!-- Second row -->
+              <div class="row" id="radio">
+                <div class="col" style="width: 25%; height: auto">
+                  <div
+                    class="card shadow-sm p-3 mb-5 bg-body rounded img-center"
+                  >
+                    <label for="walking">
+                      <input
+                        type="radio"
+                        id="walking"
+                        name="transport"
+                        value="walking"
+                        checked="checked"
+                        onclick="handleSelection(this)"
+                      />
+
+                      <img
+                        src="./images/person-walking.svg"
+                        class="card-img-top mx-auto d-block small-img"
+                        alt="walking"
+                      />
+                    </label>
+                  </div>
+                </div>
+                <div class="col" style="width: 25%; height: auto">
+                  <div
+                    class="card shadow-sm p-3 mb-5 bg-body rounded img-center"
+                  >
+                    <label for="skateboard">
+                      <input
+                        type="radio"
+                        id="skateboard"
+                        name="transport"
+                        value="skateboard"
+                        onclick="handleSelection(this)" />
+                      <img
+                        src="./images/skateboard.svg"
+                        class="card-img-top mx-auto d-block small-img"
+                        alt="skateboard"
+                    /></label>
+                  </div>
+                </div>
+              </div>
+              <!-- Second row -->
+              <div class="row">
+                <div class="col" style="width: 33%; height: auto">
+                  <div
+                    class="card shadow-sm p-3 mb-5 bg-body rounded img-center"
+                  >
+                    <label for="segway">
+                      <input
+                        type="radio"
+                        id="segway"
+                        name="transport"
+                        value="segway"
+                        onclick="handleSelection(this)" />
+
+                      <img
+                        src="./images/segway.svg"
+                        class="card-img-top mx-auto d-block small-img"
+                        alt="segway"
+                    /></label>
+                  </div>
+                </div>
+                <div class="col" style="width: 33%; height: auto">
+                  <div
+                    class="card shadow-sm p-3 mb-5 bg-body rounded img-center"
+                  >
+                    <label for="scooter">
+                      <input
+                        type="radio"
+                        id="scooter"
+                        name="transport"
+                        value="scooter"
+                        onclick="handleSelection(this)" />
+
+                      <img
+                        src="./images/scooter.svg"
+                        class="card-img-top mx-auto d-block small-img"
+                        alt="scooter"
+                    /></label>
+                  </div>
+                </div>
+                <div class="col" style="width: 34%; height: auto">
+                  <div
+                    class="card shadow-sm p-3 mb-5 bg-body rounded img-center"
+                  >
+                    <label for="hoverboard">
+                      <input
+                        type="radio"
+                        id="hoverboard"
+                        name="transport"
+                        value="hoverboard"
+                        onclick="handleSelection(this)" />
+
+                      <img
+                        src="./images/hoverboard.svg"
+                        class="card-img-top mx-auto d-block small-img"
+                        alt="hoverboard"
+                    /></label>
+                  </div>
+                </div>
+              </div>
+              <!-- End of second row for transport choices -->
+            </div>
+          </form>
+
+          <!-- end of row-->
+        </div>
+        <div class="row">
+          <!--div style="overflow:auto"-->
+          <div class="container">
+            <br />
+            <div class="row">
+              <div class="col-2">
+                <!--empty spacer col that takes up 2/12 of the space in this row. for ref: https://getbootstrap.com/docs/4.0/layout/grid/-->
+              </div>
+
+              <div class="col">
+                <!-- calculator is gonna go here -->
+
+                Input # of months:
+
+                <div class="d-flex justify-content-center">
+                  <!-- reference: https://getbootstrap.com/docs/4.0/utilities/flex/-->
+                  <!-- ref: https://getbootstrap.com/docs/4.0/components/forms/-->
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="months"
+                    placeholder="How many months of breeding?"
+                  />
+                  <input
+                    type="button"
+                    id="mycoolbutton"
+                    value="Calculate Rabbits!"
+                  />
+                </div>
+              </div>
+              <div class="col-2">
+                <!--empty spacer col-->
+              </div>
+            </div>
+            <!-- end of row-->
+
+            <br />
+
+            <div class="d-flex justify-content-center">
+              <h1 id="result-text" class="text-center">
+                result will appear here
+              </h1>
+            </div>
+          </div>
+          <!-- end of container-->
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div class="row" style="padding-top: 10rem">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+
+  <script src="./index.js"></script>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BK Go!</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/bk-GO.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <!-- let's include the css file for bootstrap, then our custom css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.2/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+
+    <!-- let's also include these jquery scripts. -->
+    <script src="/vendors/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/vendors/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Resources
+    Navbar: https://getbootstrap.com/docs/5.2/components/navbar/
+   -->
+  </head>
+
+  <body class="p-3 m-5 border-5">
+    <!-- Navbar Components -->
+
+    <div class="wrapper">
+      <header class="header">
+        <nav class="navbar navbar-dark bg-dark fixed-top shadow p-3 mb-5">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <!-- <img src="images/bk-GO.png" alt="BK Logo" class="image-logo"
+        /> -->
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasDarkNavbar"
+              aria-controls="offcanvasDarkNavbar"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="offcanvas offcanvas-end text-bg-dark"
+              tabindex="-1"
+              id="offcanvasDarkNavbar"
+              aria-labelledby="offcanvasDarkNavbarLabel"
+            >
+              <div class="offcanvas-header">
+                <div style="text-align: center">
+                  <img
+                    src="images/bk-GO.png"
+                    alt="BK Logo"
+                    class="image-logo"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <!-- End of Navbar -->
+      </header>
+    </div>
+
+    <section class="main pt-5">
+      <div class="container text-center p-5">
+        <div class="row">
+          <div class="row p-2">
+            <div class="col-sm-4">
+              <div
+                class="card shadow p-3 mb-5 bg-body rounded img-center"
+                style="width: 18rem"
+              >
+                <img
+                  src="./images/person-walking.svg"
+                  class="card-img-top"
+                  alt="Person walking"
+                  style="width: 50%; height: auto"
+                />
+                <div class="card-body">
+                  <p class="card-text">Walk</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Second row -->
+          <div class="row p-2">
+            <div class="col" style="width: 25%; height: auto">
+              <div class="card shadow p-3 mb-5 bg-body rounded img-center">
+                <img
+                  src="./images/skateboard.svg"
+                  class="card-img-top"
+                  alt="Person walking"
+                />
+                <div class="card-body">
+                  <p class="card-text">Skateboard</p>
+                </div>
+              </div>
+            </div>
+            <div class="col" style="width: 25%; height: auto">
+              <div class="card shadow p-3 mb-5 bg-body rounded img-center">
+                <img
+                  src="./images/segway.svg"
+                  class="card-img-top"
+                  alt="Person walking"
+                />
+                <div class="card-body">
+                  <p class="card-text">Segway</p>
+                </div>
+              </div>
+            </div>
+            <div class="col" style="width: 25%; height: auto">
+              <div class="card shadow p-3 mb-5 bg-body rounded img-center">
+                <img
+                  src="./images/scooter.svg"
+                  class="card-img-top"
+                  alt="Person walking"
+                />
+                <div class="card-body">
+                  <p class="card-text">Razor</p>
+                </div>
+              </div>
+            </div>
+            <div class="col" style="width: 25%; height: auto">
+              <div class="card shadow p-3 mb-5 bg-body rounded img-center">
+                <img
+                  src="./images/hoverboard.svg"
+                  class="card-img-top"
+                  alt="Person walking"
+                />
+                <div class="card-body">
+                  <p class="card-text">Hoverboard</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of second row for transport choices -->
+
+          <!-- Button to enter distance -->
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter distance..."
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2"
+            >
+              GO!
+            </button>
+          </div>
+          <!-- End of Button to enter distance -->
+        </div>
+      </div>
+    </section>
+    <!-- Footer Navbar -->
+    <footer class="footer">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+    </footer>
+    <script type="text/javascript">
+      // your solution here
+
+      // setTimeout(function () {
+      //   window.location = "./a.html";
+      // }, 5000);
+    </script>
+  </body>
+</html>

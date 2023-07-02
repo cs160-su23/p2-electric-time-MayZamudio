@@ -1,43 +1,147 @@
 <!-- Referenced: https://www.w3schools.com/html/html_responsive.asp-->
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- let's link to our stylesheet (found in public/css/styles.css)-->
-<link rel="stylesheet" type="text/css" href="/css/styles.css"> 
-</head>
+  <head>
+    <title>BK Go!</title>
+    <link rel="icon" type="image/png" href="images/bk-GO.png" />
 
-<!-- you can also specify styles straight in html! Let's use Arial and gray text on this page.-->
-<body style="font-family:Arial;color:#333333;">
-<div style="background-color:#888888;padding:15px;text-align:center;"> 
-  <h1>Page 3, Yippee!</h1>
-</div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- let's link to our stylesheet (found in public/css/styles.css)-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.2/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- <link rel="stylesheet" type="text/css" href="/css/styles.css" /> -->
+  </head>
 
-<div style="overflow:auto">
-  <div class="menu">
-    <a href="/">Home</a>
-    <a href="/a">Normal Rabbit</a>
-    <a href="/c">Sepia Rabbit</a>
-  </div>
+  <!-- nav bar -->
+  <!-- you can also specify styles straight in html! Let's use Arial and gray text on this page.-->
+  <body style="font-family: Arial; color: #333333">
+    <div style="background-color: #003262; padding: 45px; text-align: center">
+      <nav class="navbar navbar-dark bg-dark fixed-top shadow p-3 mb-5">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end text-bg-dark"
+            tabindex="-1"
+            id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <div style="text-align: center">
+                <img src="images/bk-GO.png" alt="BK Logo" width="50%" />
+              </div>
 
-  <div class="main">
-    <h2>This rabbit is very monochromatic and serious.</h2>
-    <img src="/images/BWbunny.jpg" alt="a greyscale rabbit" class="responsive center">
-        <p>Photo credits: 
-      <a href="https://unsplash.com/photos/u_kMWN-BWyU">Satyabratasm on Unsplash </a>
-   </p>
-  </div>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
 
-  <div class="right">
-    <h2>About</h2>
-    <p>This is some example code prepared for CS160: User Interface Design & Development, Summer 2022.</p>
-  </div>
-</div>
+    <div style="overflow: auto">
+      <div style="background-color: #c4820e; padding: 5px; text-align: center">
+        <!-- <h1>shm's excellent fibonacci rabbits app</h1> -->
+      </div>
 
+      <!--div style="overflow:auto"-->
+      <br />
+      <div class="container">
+        <div class="row">
+          <!-- first row is just the description. -->
+          <p>
+            Did you know? The Fibonacci sequence first appeared in Fibonacci's
+            book Liber Abaci <em>(The Book of Calculation, 1202)</em> where it
+            was used to calculate the growth of rabbit populations! <br /><br />
+            Let's say that you start with 1 pair of baby rabbits. They take 1
+            month to mature, before producing another pair of rabbits. Every
+            month thereafter, all adult pairs of rabbits produce another pair of
+            rabbits. Also, rabbits never die and never stop being able to
+            produce further rabbits!
 
+            <a href="https://proofwiki.org/wiki/Rabbit_Problem/Solution"
+              >Click this link to view my source (Proof Wiki!)</a
+            >
+          </p>
+          <br />
+        </div>
+        <!-- end of row-->
 
+        <br />
+        <div class="row">
+          <div class="col-2">
+            <!--empty spacer col that takes up 2/12 of the space in this row. for ref: https://getbootstrap.com/docs/4.0/layout/grid/-->
+          </div>
 
-</body>
+          <div class="col">
+            <!-- calculator is gonna go here -->
+            <h3>Fibonnaci Rabbit Calculator Below</h3>
+
+            Input # of months:
+
+            <div class="d-flex justify-content-center">
+              <!-- reference: https://getbootstrap.com/docs/4.0/utilities/flex/-->
+              <!-- ref: https://getbootstrap.com/docs/4.0/components/forms/-->
+              <input
+                class="form-control"
+                type="text"
+                id="months"
+                placeholder="How many months of breeding?"
+              />
+              <input
+                type="button"
+                id="mycoolbutton"
+                value="Calculate Rabbits!"
+              />
+            </div>
+          </div>
+          <div class="col-2">
+            <!--empty spacer col-->
+          </div>
+        </div>
+        <!-- end of row-->
+
+        <br />
+
+        <div class="d-flex justify-content-center">
+          <h1 id="result-text" class="text-center">result will appear here</h1>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
-
