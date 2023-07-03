@@ -1,13 +1,24 @@
 //JavaScript for adding functionality to this webpage....
-var selected = "";
+// I used provided code and customized to my needs.
+// Radio SVGs to select mode of transportation
+var selected = "walking";
+// Setting it to 3.1 for default walking value
+var mph = 3.1;
+var array_modes = ["walking", "skateboard", "segway", "scooter", "hoverboard"];
 
 function handleSelection(radio) {
   if (radio.checked) {
     selected = radio.parentElement.querySelector("img").alt;
+    mph = parseFloat(radio.value);
 
-    console.log(selected);
+    document.getElementById("selected-option").textContent = selected;
+    // document.getElementById("mph-calculated").textContent = mph;
   }
 }
+// Sets default value to walking
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("selected-option").textContent = "walking";
+});
 
 //first, let's find the text where we'll put the result.
 var result = document.getElementById("result-text");
@@ -15,59 +26,52 @@ var result = document.getElementById("result-text");
 /* now, let's find the submit button, then add this function to the HTML DOM 'onclick' event. in other words, make it so that when the button is clicked, it will run this code... */
 
 document.getElementById("mycoolbutton").onclick = function optional_name() {
-  /*lets get our variable (months) from the input field: */
-
-  var months = document.getElementById("months").value;
-
-  if (months == "") {
+  /* Get variable (distance) from the input field: */
+  var distance = document.getElementById("distance").value;
+  // Remove the string
+  if (distance == "") {
     //handle a blank input
-    months = 0; //
-    result.innerText =
-      "After 0 months, you will have 1 pair, for a total of 2 rabbits!";
+    distance = 0; //
+    result.innerText = "You must not need to go anywhere... enjoy your day!";
   } else {
-    //console.log("entered number of months: " + months)
-    pairs = compute_rabbits(months);
-    //get the answer using our helper function...
-
+    time = compute_distance(distance, mph);
     result.innerText =
-      "After " +
-      months +
-      " months, you will have " +
-      pairs +
-      " pair(s), for a total of " +
-      pairs * 2 +
-      " rabbits!";
-    //now change the text on the page to display the answer properly.
+      "It will take " + time + " minutes to get there by " + selected + "!";
   }
+
+  // Compute the rest
+  var remaining_modes = array_modes.filter(function (mode) {
+    return mode !== selected;
+  });
+
+  var remaining_list = remaining_modes.map(function (mode) {
+    var mode_time = compute_distance(distance, getMphByMode(mode));
+    return mode + ": " + mode_time + " minutes";
+  });
+
+  document.getElementById("remaining-list").innerHTML =
+    remaining_list.join("<br>");
 };
 
 /* Helper Functions! */
-
-function compute_rabbits(x) {
-  return fib(parseInt(x) + 2);
-
-  //the formula for this particular problem is the n+2th Fibonacci number.
-  //source: https://proofwiki.org/wiki/Rabbit_Problem/Solution
+function compute_distance(distance, mph) {
+  var value = (distance / mph) * 60;
+  return Math.round(value);
 }
 
-// you can ignore the code below, it's just a helper function for the fibonacci series. Ref: https://www.geeksforgeeks.org/different-ways-to-print-fibonacci-series-in-java/ (but converted to JavaScript by shm.)
-// It's a Dynamic Programming approach that could be improved but that's not the point of this lol.
-
-function fib(x) {
-  //console.log("lets make some rabbits...")
-  //if you're curious, I'm using BigInts because the numbers can get very big. Rabbits multiply fast!! don't think about it too hard though (unless you need to use very big numbers in the future one day)
-  const f = new BigInt64Array(x + 1);
-
-  f[0] = 0n;
-  f[1] = 1n;
-
-  for (i = 2; i <= parseInt(x); i++) {
-    //console.log("i: " + i + " previous: " + f[i-1] + " ,  " + f[i-2] + 'together: ' + (f[i-1] + f[i-2]));
-    f[i] = f[i - 1] + f[i - 2];
-    //console.log(" current f[i]:" + f[i]);
+function getMphByMode(mode) {
+  switch (mode) {
+    case "walking":
+      return 3.1;
+    case "skateboard":
+      return 27;
+    case "segway":
+      return 12;
+    case "scooter":
+      return 15.5;
+    case "hoverboard":
+      return 6;
+    default:
+      return;
   }
-  return parseInt(f[x]);
 }
-/*-- end of helper functions--*/
-
-//end of my javascript for this page!
